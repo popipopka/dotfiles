@@ -1,0 +1,118 @@
+{
+	"bluetooth": {
+		"on-click": "kitty -e bluetuith",
+		"on-click-right": "~/.config/waybar/scripts/bluetooth-control",
+		
+		"format-on": "<span>󰂯</span>",
+		"format-off": "󰂲",
+		"format-disabled": "󰂲",
+		
+		"format-connected": "󰂱",
+		"format-connected-battery": "󰂱 {device_battery_percentage}%",
+		
+		"tooltip-format": "",
+		"tooltip-format-connected": "{device_alias}",
+		"tooltip-format-connected-battery": "{device_alias}\t{device_battery_percentage}%",
+		
+		"tooltip-format-enumerate-connected": "{device_alias}",
+		"tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_battery_percentage}%"
+	},
+    "pulseaudio": {
+		"tooltip": false,
+        
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-scroll-up": "wpctl set-volume -l 2 @DEFAULT_AUDIO_SINK@ 5%-",
+        "on-scroll-down": "wpctl set-volume -l 2 @DEFAULT_AUDIO_SINK@ 5%+",
+        "scroll-step": 5,
+        
+		"format": "{icon} {volume}%",
+        "format-muted": " Muted",
+        "format-icons": {
+            "headphone": " ",
+            "hands-free": " ",
+            "headset": " ",
+            "phone": " ",
+            "portable": " ",
+            "car": " ",
+            "default": ["󰕿", "󰖀", "󰕾"]
+        },
+        
+        "min-length": 8
+    },
+    "network": {
+        "interval": 5,
+        
+        "format": "{ifname}",
+        "format-wifi": "{icon} {essid} ({signalStrength}%)",
+        "format-ethernet": "Ethernet {ipaddr}/{cidr}",
+        "format-disconnected": "Disconnected",
+        
+        "format-icons": [
+        	"󰢿 ",
+        	"󰢼 ",
+        	"󰢽 ",
+        	"󰢾 ",
+        ],
+        
+        "tooltip-format": "{ifname} via {gwaddr}",
+        "tooltip-format-wifi": "Wi-Fi  {essid}",
+        "tooltip-format-ethernet": "Ethernet  {ifname}",
+        "tooltip-format-disconnected": "Disconnected",
+        
+        "max-length": 50,
+        "min-length": 8,
+        
+        "on-click": "kitty -e nmtui"
+    },
+    "tray": {
+        "icon-size": 16,
+        "spacing": 10
+    },
+    "clock": {
+        "format": "<span>{:%a, %e %b   %R}</span>",
+        "timezone": "Europe/Moscow",
+        "tooltip": "false",
+    },
+    "battery": {
+        "interval": 10,
+        
+        "states": {
+            "warning": 40,
+            "critical": 20
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{icon} {time}",
+        "format-icons": [
+				" ", 
+				" ", 
+				" ", 
+				" ", 
+				" "
+        ],
+        
+        "min-length": 8
+    },
+    "backlight": {
+        "device": "intel_backlight",
+        
+        "format": "{icon} {percent}%",
+        "format-icons": [
+            "󰃞 ",
+            " ",
+            " ",
+            " ",
+            "󰃟 ",
+            " ",
+            " ",
+            " ",
+            "󰃠 "
+        ],
+        
+        "on-scroll-up": "brightnessctl set 7%-",
+        "on-scroll-down": "brightnessctl set 7%+",
+        
+        "min-length": 8
+    },
+}
