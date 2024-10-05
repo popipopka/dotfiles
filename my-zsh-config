@@ -1,0 +1,105 @@
+##====================================================================
+##===== OPTIONS SECTION
+##====================================================================
+
+setopt correct                                                  # Auto correct mistakes
+setopt extendedglob                                             # Extended globbing. Allows using regular expressions with *
+setopt nocaseglob                                               # Case insensitive globbing
+setopt rcexpandparam                                            # Array expension with parameters
+setopt nocheckjobs                                              # Don't warn about running processes when exiting
+setopt numericglobsort                                          # Sort filenames numerically when it makes sense
+setopt nobeep                                                   # No beep
+setopt appendhistory                                            # Immediately append history instead of overwriting
+setopt histignorealldups                                        # If a new command is a duplicate, remove the older one
+setopt autocd                                                   # if only directory path is entered, cd there.
+setopt inc_append_history                                       # save commands are added to the history immediately, otherwise only when shell exits.
+setopt histignorespace                                          # Don't save commands that start with space
+
+#-- zsh completions --
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' # Case insensitive tab completion
+zstyle ':completion:*' rehash true                              # automatically find new executables in path
+zstyle ':completion:*' menu select                              # Highlight menu selection
+
+#-- Speed up zsh completions --
+zstyle ':completion:*' accept-exact '*(N)'
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
+HISTFILE=~/.zhistory
+HISTSIZE=10000
+SAVEHIST=10000
+WORDCHARS=${WORDCHARS//\/[&.;]}                                 # Don't consider certain characters part of the word
+
+
+
+##====================================================================
+##===== KEYBINDINGS SECTION
+##====================================================================
+
+bindkey '^[[3~' delete-char                                     # Delete key
+bindkey '^[[C'  forward-char                                    # Right key
+bindkey '^[[D'  backward-char                                   # Left key
+bindkey '^[[5~' history-beginning-search-backward               # Page up key
+bindkey '^[[6~' history-beginning-search-forward                # Page down key
+
+# -- Navigate words with ctrl+arrow keys --
+bindkey '^[Oc' forward-word                                     #
+bindkey '^[Od' backward-word                                    #
+bindkey '^[[1;5D' backward-word                                 #
+bindkey '^[[1;5C' forward-word                                  #
+bindkey '^H' backward-kill-word                                 # delete previous word with ctrl+backspace
+bindkey '^[[Z' undo                                             # Shift+tab undo last action
+
+
+
+##====================================================================
+##===== ALIAS SECTION
+##====================================================================
+
+#-- git --
+alias git='LANG=en_US.UTF-8 git'
+alias g='lazygit'
+
+alias gcl='git clone'
+
+alias gsw='git switch'
+alias gm='git merge'
+
+alias gl='git log --pretty=format:"%C(yellow)commit %C(auto)%h%d %C(green)(%cr) %C(cyan)<%an> %n%n      %Creset%s%n" --date=relative'
+alias glg='git log --graph --pretty=format:"%C(yellow)commit %C(auto)%h%d %C(green)(%cr) %C(cyan)<%an> %n%n      %Creset%s%n" --date=relative'
+alias glo='git log --oneline'
+alias glog='git log --oneline --graph'
+
+alias gs='git status --short'
+alias ga='git add'
+alias grs='git reset'
+alias grsh='git reset --hard'
+
+alias gcv='git commit -v'
+alias gcm='git commit -m'
+alias gca='git commit --ammend'
+
+alias gpl='git pull origin'
+alias gps='git push origin'
+alias gpsu='git push -u origin main'
+alias gpsf='git push --force origin'
+
+
+#-- files --
+alias ls="exa -a --group-directories-first --icons --grid"
+alias ll="exa -lah --git --group-directories-first --icons"
+
+alias cd="z"
+
+alias cat="bat"
+
+
+##====================================================================
+##===== PLUGINS SECTION
+##====================================================================
+
+#-- bind UP and DOWN arrow keys to history substring search --
+zmodload zsh/terminfo
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down

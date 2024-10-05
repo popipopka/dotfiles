@@ -1,0 +1,58 @@
+* {
+    border: none;
+    border-radius: 0;
+
+    font-family: "JetBrainsMono Nerd Font";
+    font-weight: bold;
+    font-size: 12px;
+
+    min-height: 18px;
+}
+
+window#waybar {
+    background: rgba(0, 0, 0, 0);
+    color: #d7dfff;
+}
+
+#bluetooth,
+#battery,
+#pulseaudio,
+#backlight,
+#network,
+#clock,
+#custom-divider,
+#tray,
+#custom-power {
+    background: rgba(0, 0, 0, 0);
+
+    padding: 0px 8px;
+
+    margin-top: 2px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+#custom-power {
+    margin-left: 7px;
+}
+
+#battery.warning:not(.charging) {
+    color: #ff8c40;
+}
+#battery.critical:not(.charging) {
+    color: #c4423b;
+}
+
+#tray {
+    margin-top: 2px;
+}
+
+#tray menu {
+    border-radius: 10;
+    opacity: 0.9;
+}
+
+#clock {
+    margin-right: 7px;
+}
