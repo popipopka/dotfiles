@@ -55,6 +55,10 @@ bindkey '^[[Z' undo                                             # Shift+tab undo
 ##===== ALIAS SECTION
 ##====================================================================
 
+#-- k8s --
+alias k='kubectl'
+
+
 #-- git --
 alias git='LANG=en_US.UTF-8 git'
 alias g='lazygit'
@@ -74,14 +78,13 @@ alias ga='git add'
 alias grs='git reset'
 alias grsh='git reset --hard'
 
-alias gcv='git commit -v'
 alias gcm='git commit -m'
 alias gca='git commit --ammend'
 
 alias gpl='git pull origin'
 alias gps='git push origin'
 alias gpsu='git push -u origin main'
-alias gpsf='git push --force origin'
+alias gpsf='git push origin --force'
 
 
 #-- files --
